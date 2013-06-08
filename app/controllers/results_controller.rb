@@ -28,7 +28,7 @@ class ResultsController < ApplicationController
   def destroy
     Result.delete(params[:id])
 
-    #render...
+    redirect_to :action => :index
   end
   
   def update

@@ -8,6 +8,16 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
+
+    <style type="text/css">
+      .match, input.match{
+          width: 35px;
+          height: 30px;
+          text-align: center;
+          font-size: 30px;
+      }
+    </style>
+
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <div class="navbar navbar-fixed-top">
