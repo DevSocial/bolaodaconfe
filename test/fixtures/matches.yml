@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-06-07 21:33:25
+  locale: MyString
+  team1: 
+  team2: 
+  final_result1: 1
+  final_result: 1
+
+two:
+  date: 2013-06-07 21:33:25
+  locale: MyString
+  team1: 
+  team2: 
+  final_result1: 1
+  final_result: 1
