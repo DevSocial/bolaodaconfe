@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130608003336) do
 
   create_table "matches", :force => true do |t|
+    t.string   "group"
     t.datetime "date"
     t.string   "locale"
     t.integer  "team1_id"

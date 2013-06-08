@@ -1,0 +1,60 @@
+<% model_class = Match %>
+<div class="page-header">
+  <h1>Grupo A</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data e Horário</th>
+      <th>Local</th>
+      <th></th>
+      <th></th>
+      <th>Jogo</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @group_a.each do |match| %>
+      <tr>
+        <td><%= l match.date, :format => :short %></td>
+        <td><%= match.locale %></td>
+        <td><%= image_tag(match.team1.flag) %></td>
+        <td><%= match.team1.name %></td>
+        <td></td>
+        <td><%= match.team2.name %></td>
+        <td><%= image_tag(match.team2.flag) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="page-header">
+  <h1>Grupo B</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data e Horário</th>
+      <th>Local</th>
+      <th></th>
+      <th></th>
+      <th>Jogo</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @group_b.each do |match| %>
+      <tr>
+        <td><%= l match.date, :format => :short %></td>
+        <td><%= match.locale %></td>
+        <td><%= image_tag(match.team1.flag) %></td>
+        <td><%= match.team1.name %></td>
+        <td></td>
+        <td><%= match.team2.name %></td>
+        <td><%= image_tag(match.team2.flag) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

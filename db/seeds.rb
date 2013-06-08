@@ -12,14 +12,14 @@ puts 'TEAMS'
 teams = []
 teams << Team.create(
   [
-    { :name => 'Brasil' },
-    { :name => 'Espanha' },
-    { :name => 'Itália' },
-    { :name => 'Japão' },
-    { :name => 'México' },
-    { :name => 'Nigéria' },
-    { :name => 'Taiti' },
-    { :name => 'Uruguai' }
+    { :name => 'Brasil', :flag => 'BRA.png' },
+    { :name => 'Espanha', :flag => 'ESP.png' },
+    { :name => 'Itália', :flag => 'ITA.png' },
+    { :name => 'Japão', :flag => 'JPN.png' },
+    { :name => 'México', :flag => 'MEX.png' },
+    { :name => 'Nigéria', :flag => 'NGA.png' },
+    { :name => 'Taiti', :flag => 'TAH.png' },
+    { :name => 'Uruguai', :flag => 'URU.png' }
   ], :without_protection => true
 )
 
@@ -27,62 +27,74 @@ puts 'MATCHES'
 matches = []
 matches << Match.create(
   [
-    { :date => DateTime.strptime("15/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'A',
+      :date => DateTime.strptime("15/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Brasília", 
       :team1 => Team.find_by_name('Brasil'),
       :team2 => Team.find_by_name('Japão') },
       
-    { :date => DateTime.strptime("16/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'A',
+      :date => DateTime.strptime("16/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Rio de Janeiro", 
       :team1 => Team.find_by_name('México'),
       :team2 => Team.find_by_name('Itália') },
       
-    { :date => DateTime.strptime("19/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'A',
+      :date => DateTime.strptime("19/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Fortaleza", 
       :team1 => Team.find_by_name('Brasil'),
       :team2 => Team.find_by_name('México') },
       
-    { :date => DateTime.strptime("19/06/2013 19:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'A',
+      :date => DateTime.strptime("19/06/2013 19:00", "%d/%m/%Y %H:%M"), 
       :locale => "Recife", 
       :team1 => Team.find_by_name('Itália'),
       :team2 => Team.find_by_name('Japão') },
       
-    { :date => DateTime.strptime("22/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'A',
+      :date => DateTime.strptime("22/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Salvador",
       :team1 => Team.find_by_name('Itália'),
       :team2 => Team.find_by_name('Brasil') },
       
-    { :date => DateTime.strptime("22/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'A',
+      :date => DateTime.strptime("22/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Belo Horizonte", 
       :team1 => Team.find_by_name('Japão'),
       :team2 => Team.find_by_name('México') },
       
-    { :date => DateTime.strptime("16/06/2013 19:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'B',
+      :date => DateTime.strptime("16/06/2013 19:00", "%d/%m/%Y %H:%M"), 
       :locale => "Recife", 
       :team1 => Team.find_by_name('Espanha'),
       :team2 => Team.find_by_name('Uruguai') },
       
-    { :date => DateTime.strptime("17/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'B',
+      :date => DateTime.strptime("17/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Belo Horizonte", 
       :team1 => Team.find_by_name('Taiti'),
       :team2 => Team.find_by_name('Nigéria') },
       
-    { :date => DateTime.strptime("20/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'B',
+      :date => DateTime.strptime("20/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Rio de Janeiro", 
       :team1 => Team.find_by_name('Espanha'),
       :team2 => Team.find_by_name('Taiti') },
       
-    { :date => DateTime.strptime("20/06/2013 19:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'B',
+      :date => DateTime.strptime("20/06/2013 19:00", "%d/%m/%Y %H:%M"), 
       :locale => "Salvador", 
       :team1 => Team.find_by_name('Nigéria'),
       :team2 => Team.find_by_name('Uruguai') },
       
-    { :date => DateTime.strptime("23/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'B',
+      :date => DateTime.strptime("23/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Fortaleza", 
       :team1 => Team.find_by_name('Nigéria'),
       :team2 => Team.find_by_name('Espanha') },
       
-    { :date => DateTime.strptime("23/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+    { :group => 'B',
+      :date => DateTime.strptime("23/06/2013 16:00", "%d/%m/%Y %H:%M"), 
       :locale => "Recife", 
       :team1 => Team.find_by_name('Uruguai'),
       :team2 => Team.find_by_name('Taiti') }

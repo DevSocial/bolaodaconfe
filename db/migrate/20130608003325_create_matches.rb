@@ -1,6 +1,7 @@
 class CreateMatches < ActiveRecord::Migration
   def change
     create_table :matches do |t|
+      t.string :group
       t.datetime :date
       t.string :locale
       t.references :team1
