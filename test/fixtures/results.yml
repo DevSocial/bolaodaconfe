@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  match: 
+  result1: 1
+  result2: 1
+
+two:
+  match: 
+  result1: 1
+  result2: 1

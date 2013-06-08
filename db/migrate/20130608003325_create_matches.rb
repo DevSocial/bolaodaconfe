@@ -7,7 +7,7 @@ class CreateMatches < ActiveRecord::Migration
       t.references :team1
       t.references :team2
       t.integer :final_result1
-      t.integer :final_result
+      t.integer :final_result2
 
       t.timestamps
     end

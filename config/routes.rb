@@ -1,4 +1,6 @@
 Bolaodaconfe::Application.routes.draw do
+
+  resources :results
   resources :matches
   root :to => 'home#index'
   

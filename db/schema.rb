@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608003336) do
+ActiveRecord::Schema.define(:version => 20130608024458) do
 
   create_table "matches", :force => true do |t|
     t.string   "group"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20130608003336) do
     t.integer  "team1_id"
     t.integer  "team2_id"
     t.integer  "final_result1"
-    t.integer  "final_result"
+    t.integer  "final_result2"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20130608003336) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "results", :force => true do |t|
+    t.integer  "match_id"
+    t.integer  "result1"
+    t.integer  "result2"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "results", ["match_id"], :name => "index_results_on_match_id"
 
   create_table "teams", :force => true do |t|
     t.string   "name"
