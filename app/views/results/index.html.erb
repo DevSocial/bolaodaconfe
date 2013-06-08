@@ -15,8 +15,9 @@
 <%= form_for @result, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= image_tag(@result.match.team1.flag) %>
-    <%= f.text_field :result1, :class => 'number_field' %>
-    <%= f.text_field :result2, :class => 'number_field' %>
+    <%= f.hidden_field :match_id, :value => @result.match.id %>
+    <%= f.text_field :result1, :class => 'input-mini' %>
+    <%= f.text_field :result2, :class => 'input-mini' %>
     <%= image_tag(@result.match.team2.flag) %>
   </div>
 

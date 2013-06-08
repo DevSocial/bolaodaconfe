@@ -22,7 +22,13 @@ class ResultsController < ApplicationController
   def create
     @result = Result.create(params[:result])
     @result.save
-    respond_to @result
+    render 'show'
+  end
+
+  def destroy
+    Result.delete(params[:id])
+
+    #render...
   end
   
   def update
