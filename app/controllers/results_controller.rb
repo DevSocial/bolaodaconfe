@@ -3,47 +3,28 @@ class ResultsController < ApplicationController
   respond_to :html, :json
 
   def index
+    # antes de fazer a pesquisa, é necessário verificar
+    # se o usuário já deu um palpite, nesse caso
+    # ele só quer editar o palpite
     
-    @results = Result.all
-    respond_with @results
-  end
-
-  def show
-    @result = Result.find(params[:id])
-    respond_with @results
-  end
-
-  def new
+    next_match = Match.where('final_result1 IS NULL AND final_result2 IS NUll AND date >= ?', DateTime.now).first
+    
     @result = Result.new
-    respond_with @results
+    @result.match = next_match
+    
+    # falta atribui o usuário
+    # algo parecido com o que há abaixo:
+    # @result.user = current_user
+    
+    respond_with @result
   end
-
-  def edit
-    @result = Result.find(params[:id])
-  end
-
+  
   def create
-    @result = Result.new(params[:result])
-
-    if @result.save
-      flash[:notice] = "Debug Create"
-    end
-    respond_with @results
+    @result = Result.create(params[:result])
+    @result.save
+    respond_to @result
   end
-
+  
   def update
-    @result = Result.find(params[:id])
-
-    if @result.update_attributes(params[:result])
-      flash[:notice] = "Debug Update"    
-    end
-    respond_with @results
-  end
-
-  def destroy
-    @result = Result.find(params[:id])
-    @result.destroy
-    flash[:notice] = "Debug Destroy"
-    respond_with @results
   end
 end
