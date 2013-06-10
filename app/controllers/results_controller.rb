@@ -16,6 +16,8 @@ class ResultsController < ApplicationController
     # algo parecido com o que há abaixo:
     # @result.user = current_user
     
+    @all_matches = Match.order(:date)
+
     respond_with @result
   end
   
