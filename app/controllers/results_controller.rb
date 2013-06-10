@@ -7,10 +7,9 @@ class ResultsController < ApplicationController
     # se o usuário já deu um palpite, nesse caso
     # ele só quer editar o palpite
     
-    next_match = Match.where('final_result1 IS NULL AND final_result2 IS NUll AND date >= ?', DateTime.now).first
-    
     @result = Result.new
-    @result.match = next_match
+    
+    @result.match = Match.where('final_result1 IS NULL AND final_result2 IS NUll AND date >= ?', DateTime.now).first
     
     # falta atribui o usuário
     # algo parecido com o que há abaixo:
