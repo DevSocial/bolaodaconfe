@@ -27,7 +27,7 @@ class ResultsController < ApplicationController
     if @result.save
       flash[:notice] = 'Palpite salvo com sucesso.'
     else
-      flash[:notice] = @result.errors.any? ? 'frizzo' : 'nenhum'
+      flash[:notice] = @result.errors.any? ? 'Teste Git' : 'nenhum'
     end
 
     redirect_to :action => :index
