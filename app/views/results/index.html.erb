@@ -19,7 +19,7 @@
   <tbody>
     <% @all_matches.each do |match| %>
       <tr>
-        <%= form_for :result do |f| %>
+        <%= form_for :result, :remote => true do |f| %>
           <%= f.hidden_field :match_id, :value => match.id %>
           <td class='span3'><%= l match.date, :format => :short %></td>
           <!--<td><%= match.locale %></td>-->
@@ -43,13 +43,15 @@
 </table>
 
 <script type="text/javascript">
+
   function IsStringEmpty(str)
   {
-    if(str && str!='') 
+    if(str && str != '') 
       return false;
     else
       return true;
   }
+  
   function FormValidate(form)
   {
     if(IsStringEmpty(form.result_result1.value))

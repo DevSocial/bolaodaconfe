@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bolão da Confe</title>
     <meta name="description" content="Bolão da Confe">
+    
     <%= stylesheet_link_tag "application", :media => "all" %>
     
+    <%= javascript_include_tag "application" %>
+
     <%= csrf_meta_tags %>
+
     <%= yield(:head) %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
@@ -99,11 +103,6 @@
           <p class="muted credit">&copy; Company 2013</p>
         </div>
       </div>
-      <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-
     </div> <!--! end of #main -->
   </body>
 </html>

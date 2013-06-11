@@ -22,15 +22,26 @@ class ResultsController < ApplicationController
   
   def create
     @result = Result.create(params[:result])
-    #@result.save
-    #render 'show'
-    if @result.save
-      flash[:notice] = 'Palpite salvo com sucesso.'
-    else
-      flash[:notice] = @result.errors.any? ? 'Teste Git' : 'nenhum'
+
+    respond_to do |format|
+      if @result
+        @result.save
+        flash[:success] = 'Deu certo!'
+        format.json { render :json =>{:result => "ok", :message=>"ok", :result_id => @result.id } }
+      else
+        format.json { render :json => { :result=>"failed", :error=>"failed" } }
+      end
     end
 
-    redirect_to :action => :index
+    #@result.save
+    #render 'show'
+    #if @result.save
+    #  flash[:notice] = 'Palpite salvo com sucesso.'
+    #else
+    #  flash[:notice] = @result.errors.any? ? 'Teste Git' : 'nenhum'
+    #end
+
+    #redirect_to :action => :index
     #respond_with(@result)
   end
 
