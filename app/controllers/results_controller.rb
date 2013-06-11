@@ -24,12 +24,11 @@ class ResultsController < ApplicationController
     @result = Result.create(params[:result])
 
     respond_to do |format|
-      if @result
-        @result.save
-        flash[:success] = 'Deu certo!'
-        format.json { render :json =>{:result => "ok", :message=>"ok", :result_id => @result.id } }
+      if @result.save
+        #flash[:success] = 'Deu certo!'
+        format.json { render :json =>{ :result => "ok", :message=>"Feitoooo", :result_id => @result.id } }
       else
-        format.json { render :json => { :result=>"failed", :error=>"failed" } }
+        format.json { render :json => { :result => "failed", :message=>"failed", :result_id => -1 } }
       end
     end
 

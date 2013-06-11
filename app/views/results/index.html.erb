@@ -19,7 +19,7 @@
   <tbody>
     <% @all_matches.each do |match| %>
       <tr>
-        <%= form_for :result, :remote => true do |f| %>
+        <%= form_for Result.new, :remote => true do |f| %>
           <%= f.hidden_field :match_id, :value => match.id %>
           <td class='span3'><%= l match.date, :format => :short %></td>
           <!--<td><%= match.locale %></td>-->
@@ -43,15 +43,21 @@
 </table>
 
 <script type="text/javascript">
+  
+  $(document).ready(function() {
+    $('.new_result').bind('ajax:success', function(evt, data, status, xhr) {  
+      alert(data.message + ' ' + data.result + ' ' + data.result_id);
+    }); 
+  });  
 
-  function IsStringEmpty(str)
+  /*function IsStringEmpty(str)
   {
     if(str && str != '') 
       return false;
     else
       return true;
   }
-  
+
   function FormValidate(form)
   {
     if(IsStringEmpty(form.result_result1.value))
@@ -63,5 +69,5 @@
       return false;
     }
     return true;
-  }
+  }*/
 </script>
