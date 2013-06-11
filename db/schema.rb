@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608024458) do
+ActiveRecord::Schema.define(:version => 20130611034623) do
 
   create_table "matches", :force => true do |t|
     t.string   "group"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(:version => 20130608024458) do
     t.string   "flag"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.datetime "confirmed_at"
+    t.string   "confirmation_token"
   end
 
 end

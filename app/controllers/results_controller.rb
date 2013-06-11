@@ -10,11 +10,11 @@ class ResultsController < ApplicationController
     #@result = Result.new
     #@result.match = Match.where('final_result1 IS NULL AND final_result2 IS NULL AND date >= ?', DateTime.now).first
     
-    # falta atribui o usuário
+    # falta atribuir o usuário,
     # algo parecido com o que há abaixo:
     # @result.user = current_user
     
-    #respond_with @result
+    #respond_with @result    
         
     @all_matches = Match.order(:date)
     

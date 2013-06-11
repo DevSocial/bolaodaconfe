@@ -1,7 +1,11 @@
 Bolaodaconfe::Application.routes.draw do
 
+  resources :users
   resources :results
   resources :matches
+  
+  resource :confirmation, :only => [:show] 
+  resource :user_sessions, :only => [:create, :new, :destroy]
   root :to => 'home#index'
   
   # The priority is based upon order of creation:
