@@ -1,32 +1,42 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :full_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :full_name, :class => 'text_field' %>
-    </div>
+<% if @user.errors.has_key? :base %>
+  <div id="error_explanation">
+    <%= @user.errors[:base].join(', ') %>
   </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :password, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :password_confirmation, :class => 'text_field' %>
-    </div>
-  </div>
+<% end %>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn' %>
-  </div>
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend>Registrar-se</legend>
+    <div class="control-group error">
+      <%= f.label 'Nome', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :full_name, :class => 'text_field' %>
+          <%= error_tag @user, :full_name %>
+        </div>
+    </div>
+    <div class="control-group error">
+      <%= f.label 'Email', :for => 'inputError', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :email, :id => 'inputError' %>
+          <%= error_tag @user, :email %>
+        </div>
+    </div>
+    <div class="control-group error">
+      <%= f.label 'Senha', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.password_field :password, :class => 'text_field' %>
+          <%= error_tag @user, :password %>
+        </div>
+    </div>
+    <div class="control-group error">
+      <%= f.label 'Confirmação da senha', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.password_field :password_confirmation, :class => 'text_field' %>
+          <%= error_tag @user, :password_confirmation %>
+        </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit 'Registrar', :class => 'btn btn-primary' %>
+    </div> 
+  </fieldset>
 <% end %>
