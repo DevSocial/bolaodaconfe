@@ -37,45 +37,7 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <style type="text/css">
-      .match, input.match{
-          width: 35px;
-          height: 30px;
-          text-align: center;
-          font-size: 30px;
-      }
-
-      /* Sticky footer styles
-      -------------------------------------------------- */
-
-      /* Wrapper for page content to push down footer */
-      #wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
-      }
-
-      /* Set the fixed height of the footer here */
-      #push,
-      #footer {
-        height: 30px;
-        padding-top: 15px;
-        text-align: right;
-      }
-      #footer {
-        background-color: #f5f5f5;
-      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
+      
     </style>
 
   </head>
@@ -104,7 +66,10 @@
       </div> <!--! end of .container -->
       <div id="footer">
         <div class="container">
-          <p class="muted credit">&copy; Company 2013</p>
+          <ul class="inline">
+            <li><%= image_tag 'rails.png', :size => "30x20" %> </li>
+            <li> <p class="muted credit">&copy; Company 2013</p></li>
+          </ul>
         </div>
       </div>
     </div> <!--! end of #main -->

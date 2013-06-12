@@ -1,5 +1,11 @@
 <% model_class = Result %>
 
+<div class="alert alert-success" style="display:none;" id='alertOk'>
+</div>
+
+<div class="alert alert-error" style="display:none;" id='alertError'>
+</div>
+
 <div class="page-header">
   <h2>Palpita Aí Manolo!</h2>
 </div>
@@ -24,7 +30,13 @@
           <td class='span3'><%= l match.date, :format => :short %></td>
           <!--<td><%= match.locale %></td>-->
           <td class='span2'><%= image_tag(match.team1.flag) %></td>
-          <td class='span2'><%= f.text_field :result1, :class => 'input-mini match', :title =>"Digite aqui seu Palpite!" %></td>
+         
+          <td class='span2'><%= f.text_field :result1, 
+                                             disabled: (true if match.date < DateTime.now), 
+                                             :class => 'input-mini match', 
+                                             :title =>"Digite aqui seu Palpite!" %>
+          </td>
+          
           <td class='span2'><%= match.team1.name %><br>
             <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result1 %></span>
           </td>
@@ -32,9 +44,17 @@
           <td class='span2'><%= match.team2.name %><br>
             <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result2 %></span>
           </td>
-          <td class='span2'><%= f.text_field :result2, :class => 'input-mini match', :title =>"Digite aqui seu Palpite!"%></td>
+          
+          <td class='span2'><%= f.text_field :result2, 
+                                             disabled: (true if match.date < DateTime.now), 
+                                             :class => 'input-mini match', :title =>"Digite aqui seu Palpite!"%></td>
+          
           <td class='span2'><%= image_tag(match.team2.flag) %></td>
-          <td class='span2'><%= f.submit "Palpitar", :class => 'btn btn-primary' %></td>
+          
+          <td class='span2'><%= f.submit "Palpitar", 
+                                disabled: (true if match.date < DateTime.now), 
+                                :class => 'btn btn-primary' %></td>
+         
         <% end %>
       </tr>
       
@@ -46,7 +66,18 @@
   
   $(document).ready(function() {
     $('.new_result').bind('ajax:success', function(evt, data, status, xhr) {  
-      alert(data.message + ' ' + data.result + ' ' + data.result_id);
+      //alert(data.message + ' ' + data.result + ' ' + data.result_id);
+      //$.find('.alert alert-success').html("errorText");
+      if(data.result == 'ok'){
+        $('#alertOk').html(data.message + ' ' + data.result + ' ' + data.result_id);
+        $('#alertOk').fadeIn().delay(3000).fadeOut();
+        $('#alertError').fadeOut();
+      }
+      else{
+        $('#alertError').html(data.message + ' ' + data.result + ' ' + data.result_id);
+        $('#alertError').fadeIn().delay(3000).fadeOut();
+        $('#alertOk').fadeOut();
+      }
     }); 
   });  
 

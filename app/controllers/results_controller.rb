@@ -16,14 +16,20 @@ class ResultsController < ApplicationController
     
     #respond_with @result    
         
-    @all_matches = Match.order(:date)
+    @all_matches = Match.where(date: DateTime.now.beginning_of_day..DateTime.now.end_of_day)
     
   end
   
   def create
     @result = Result.create(params[:result])
+    @match = Match.find(@result.match_id)
 
     respond_to do |format|
+      if @match.date < DateTime.now
+        format.json { render :json => { :result => "failed", 
+                                        :message=>"Já não há tempo para mais nada amigo!", 
+                                        :result_id => -1 } }
+      end
       if @result.save
         #flash[:success] = 'Deu certo!'
         format.json { render :json =>{ :result => "ok", :message=>"Feitoooo", :result_id => @result.id } }
