@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class UsersController < ApplicationController
   before_filter :require_no_authentication, :only => [:new, :create]
   before_filter :can_change, :only => [:edit, :update]
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       SignupMailer.confirm_email(@user).deliver
 
-      redirect_to @user, :notice => 'Cadastro criado com sucesso!'
+      redirect_to @user, :notice => 'Cadastro criado com sucesso! Um e-mail foi enviado para a confirmação de seu cadastro.'
     else
       render :new
     end

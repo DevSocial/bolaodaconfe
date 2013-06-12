@@ -1,4 +1,9 @@
+# encoding: UTF-8
+
 class ResultsController < ApplicationController
+
+  before_filter :require_authentication,
+    :only => [:index, :new, :create, :destroy, :update]
 
   respond_to :html, :json
 
@@ -16,7 +21,13 @@ class ResultsController < ApplicationController
     
     #respond_with @result    
         
-    @all_matches = Match.where(date: DateTime.now.beginning_of_day..DateTime.now.end_of_day)
+    #@all_matches = Match.where(date: DateTime.now.beginning_of_day..DateTime.now.end_of_day)
+    
+    @all_matches = Match.where('final_result1 IS NULL AND final_result2 IS NULL AND date >= ?', DateTime.now)
+    
+    #@result = Result.where(:user => current_user).first
+    
+    #@all_matches = Match.where
     
   end
   

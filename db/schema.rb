@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611034623) do
+ActiveRecord::Schema.define(:version => 20130612231427) do
 
   create_table "matches", :force => true do |t|
     t.string   "group"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130611034623) do
     t.integer  "result2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   add_index "results", ["match_id"], :name => "index_results_on_match_id"

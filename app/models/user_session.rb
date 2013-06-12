@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class UserSession
   include ActiveModel::Validations
   include ActiveModel::Conversion
@@ -21,7 +23,7 @@ class UserSession
     if user.present?
       store(user)
     else
-      errors.add(:base, :invalid_login)
+      errors.add(:base, "Usuário ou senha inválidos")
       false
     end
   end
