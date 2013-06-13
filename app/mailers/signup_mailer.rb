@@ -1,5 +1,5 @@
 class SignupMailer < ActionMailer::Base
-  default :from => 'no-reply@bolaodaconfe.net'
+  default :from => 'no-reply@bolaodaconfe.herokuapp.com'
   
   def confirm_email(user)
     @user = user
@@ -9,7 +9,7 @@ class SignupMailer < ActionMailer::Base
     
     mail({
       :to => user.email,
-      :bcc => ['sign ups <signups@bolaodaconfe.net>'],
+      :bcc => ['sign ups <signups@bolaodaconfe.herokuapp.com>'],
       :subject => 'Bolao da Confe - Confirme seu email'
     })
   end

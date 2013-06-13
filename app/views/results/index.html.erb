@@ -23,37 +23,37 @@
     </tr>
   </thead>-->
   <tbody>
-    <% @all_matches.each do |match| %>
+    <% @results.each do |result| %>
       <tr>
-        <%= form_for Result.new, :remote => true do |f| %>
-          <%= f.hidden_field :match_id, :value => match.id %>
-          <%= f.hidden_field :user_id, :value => current_user.id %>
-          <td class='span3'><%= l match.date, :format => :short %></td>
-          <!--<td><%= match.locale %></td>-->
-          <td class='span2'><%= image_tag(match.team1.flag) %></td>
+        <%= form_for result, :remote => true do |f| %>
+          <%= f.hidden_field :match_id, :value => result.match_id %>
+          <%= f.hidden_field :user_id, :value => result.user_id %>
+          <td class='span3'><%= l result.match.date, :format => :short %></td>
+          <!--<td><%= result.match.locale %></td>-->
+          <td class='span2'><%= image_tag(result.match.team1.flag) %></td>
          
-          <td class='span2'><%= f.text_field :result1, 
-                                             disabled: (true if match.date < DateTime.now), 
+          <td class='span2'><%= f.text_field :result1,
+                                             disabled: (true if result.match.date < DateTime.now), 
                                              :class => 'input-mini match', 
                                              :title => "Digite aqui seu Palpite!" %>
           </td>
           
-          <td class='span2'><%= match.team1.name %><br>
-            <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result1 %></span>
+          <td class='span2'><%= result.match.team1.name %><br>
+            <span class="badge badge-info" title="Resultado da partida"><%= is_nil result.match.final_result1 %></span>
           </td>
           <td class='span2'><i class="icon-asterisk"></i></td>
-          <td class='span2'><%= match.team2.name %><br>
-            <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result2 %></span>
+          <td class='span2'><%= result.match.team2.name %><br>
+            <span class="badge badge-info" title="Resultado da partida"><%= is_nil result.match.final_result2 %></span>
           </td>
           
-          <td class='span2'><%= f.text_field :result2, 
-                                             disabled: (true if match.date < DateTime.now), 
+          <td class='span2'><%= f.text_field :result2,
+                                             disabled: (true if result.match.date < DateTime.now), 
                                              :class => 'input-mini match', :title =>"Digite aqui seu Palpite!"%></td>
           
-          <td class='span2'><%= image_tag(match.team2.flag) %></td>
+          <td class='span2'><%= image_tag(result.match.team2.flag) %></td>
           
-          <td class='span2'><%= f.submit "Palpitar", 
-                                disabled: (true if match.date < DateTime.now), 
+          <td class='span2'><%= f.submit "Palpitar",
+                                disabled: (true if result.match.date < DateTime.now), 
                                 :class => 'btn btn-primary' %></td>
          
         <% end %>
