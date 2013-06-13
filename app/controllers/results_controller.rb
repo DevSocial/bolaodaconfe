@@ -50,7 +50,7 @@ class ResultsController < ApplicationController
         #flash[:success] = 'Deu certo!'
         format.json { render :json =>{ :result => "ok", :message => "Feitoooo", :result_id => @result.id } }
       else
-        #format.json { render :json => { :result => "failed", :message => "failed", :result_id => -1 } }
+        format.json { render :json => { :result => "failed", :message => "failed", :result_id => -1 } }
       end
     end
     
