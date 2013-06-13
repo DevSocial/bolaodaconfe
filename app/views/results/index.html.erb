@@ -1,27 +1,13 @@
 <% model_class = Result %>
 
-<div class="alert alert-success" style="display:none;" id='alertOk'>
-</div>
-
-<div class="alert alert-error" style="display:none;" id='alertError'>
-</div>
+<div class="alert alert-success" style="display:none;" id='alertOk'></div>
+<div class="alert alert-error" style="display:none;" id='alertError'></div>
 
 <div class="page-header">
   <h2>Palpita Aí Manolo!</h2>
 </div>
 
 <table class="table table-striped">
-  <!--<thead>
-    <tr>
-      <th>Data e Horário</th>
-      <th>Local</th>
-      <th></th>
-      <th></th>
-      <th>Jogo</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>-->
   <tbody>
     <% @results.each do |result| %>
       <tr>
@@ -35,20 +21,11 @@
           <td class='span2'><%= f.text_field :result1,
                                              disabled: (true if result.match.date < DateTime.now), 
                                              :class => 'input-mini match', 
-                                             :title => "Digite aqui seu Palpite!" %>
-          </td>
-          
-          <td class='span2'><%= result.match.team1.name %><br>
-            <span class="badge badge-info" title="Resultado da partida"><%= is_nil result.match.final_result1 %></span>
-          </td>
-          <td class='span2'><i class="icon-asterisk"></i></td>
-          <td class='span2'><%= result.match.team2.name %><br>
-            <span class="badge badge-info" title="Resultado da partida"><%= is_nil result.match.final_result2 %></span>
-          </td>
-          
+                                             :title => "Digite aqui seu palpite!" %></td>
           <td class='span2'><%= f.text_field :result2,
                                              disabled: (true if result.match.date < DateTime.now), 
-                                             :class => 'input-mini match', :title =>"Digite aqui seu Palpite!"%></td>
+                                             :class => 'input-mini match', 
+                                             :title =>"Digite aqui seu palpite!"%></td>
           
           <td class='span2'><%= image_tag(result.match.team2.flag) %></td>
           
@@ -58,7 +35,6 @@
          
         <% end %>
       </tr>
-      
     <% end %>
   </tbody>
 </table>
@@ -81,25 +57,4 @@
       }
     }); 
   });  
-
-  /*function IsStringEmpty(str)
-  {
-    if(str && str != '') 
-      return false;
-    else
-      return true;
-  }
-
-  function FormValidate(form)
-  {
-    if(IsStringEmpty(form.result_result1.value))
-    {
-      return false;
-    }
-    if(IsStringEmpty(form.result_result2.value))
-    {
-      return false;
-    }
-    return true;
-  }*/
 </script>
