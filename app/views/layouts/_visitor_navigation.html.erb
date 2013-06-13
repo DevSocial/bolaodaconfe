@@ -6,11 +6,14 @@
   <li>
   <%= link_to 'Logar', new_user_sessions_path %>
   </li>
-  
-  <%= form_for :user, :html => { :class => 'form-inline'}, :remote => true do |u| %>
-    <%= u.text_field :email, :class => 'input-small', :placeholder => 'Email' %>
-    <%= u.password_field :password, :class => 'input-small', :placeholder => 'Password' %>
-    <%= u.submit 'Entrar', :class => 'btn' %>
-  <% end %>
-  
 </ul>
+
+<div class="btn-group">
+  <%= form_for :user, :html => { :class => 'form-inline'}, :remote => true do |u| %>
+    <%= u.text_field :email, :class => 'input-medium', :placeholder => 'Email' %>
+    <%= u.password_field :password, :class => 'input-small', :placeholder => 'Password' %>
+    <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+      <i class='icon-user'></i> Entrar
+    <% end %>
+  <% end %>
+</div>
