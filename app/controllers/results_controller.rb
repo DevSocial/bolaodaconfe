@@ -5,7 +5,7 @@ class ResultsController < ApplicationController
   before_filter :require_authentication,
     :only => [:index, :new, :create, :destroy, :update]
 
-  respond_to :html, :json
+#  respond_to :html, :json
 
   def index
     #Data do jogo do Brasil dia 15 as 16: 
@@ -20,6 +20,8 @@ class ResultsController < ApplicationController
     #@all_matches = Match.where('date >= ? AND date <= ?', day_of_match.date, day_of_match.date.end_of_day)
     
     #DEBUG
+    
+    #@date = DateTime.now
     
     #Busca a primeira da data do jogo mais recente a partir da data atual 
     day_of_match = Match.where('date >= ?', DateTime.now).order(:date).select(:date).first
@@ -46,14 +48,11 @@ class ResultsController < ApplicationController
     @result = Result.find(params[:id])
     respond_to do |format|
       if @result.update_attributes(params[:result])
-        #redirect_to :action => :index  
-        #flash[:success] = 'Deu certo!'
-        format.json { render :json =>{ :result => "ok", :message => "Feitoooo", :result_id => @result.id } }
+        format.json { render :json =>{ :result => "ok", :message => "Palpite salvo com sucesso!", :result_id => @result.id } }
       else
-        format.json { render :json => { :result => "failed", :message => "failed", :result_id => -1 } }
+        format.json { render :json => { :result => "failed", :message => "Ops...não foi possível salvar seu palpite", :result_id => -1 } }
       end
-    end
-    
+    end 
   end
 
 #  def destroy

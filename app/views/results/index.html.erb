@@ -22,7 +22,9 @@
                                              disabled: (true if result.match.date < DateTime.now), 
                                              :class => 'input-mini match', 
                                              :title => "Digite aqui seu palpite!" %></td>
-          <td class='span2'><i class="icon-asterisk"></i></td>
+                                             
+          <td class='span2'><%= image_tag("vs.png", :size => "60x60", :class => 'img-rounded') %></td>
+          
           <td class='span2'><%= f.text_field :result2,
                                              disabled: (true if result.match.date < DateTime.now), 
                                              :class => 'input-mini match', 
@@ -47,12 +49,12 @@
       //alert(data.message + ' ' + data.result + ' ' + data.result_id);
       //$.find('.alert alert-success').html("errorText");
       if(data.result == 'ok'){
-        $('#alertOk').html(data.message + ' ' + data.result + ' ' + data.result_id);
+        $('#alertOk').html(data.message);
         $('#alertOk').fadeIn().delay(3000).fadeOut();
         $('#alertError').fadeOut();
       }
       else{
-        $('#alertError').html(data.message + ' ' + data.result + ' ' + data.result_id);
+        $('#alertError').html(data.message);
         $('#alertError').fadeIn().delay(3000).fadeOut();
         $('#alertOk').fadeOut();
       }
