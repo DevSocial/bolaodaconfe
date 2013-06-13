@@ -21,13 +21,51 @@ class ResultsController < ApplicationController
     
     #respond_with @result    
         
-    #@all_matches = Match.where(date: DateTime.now.beginning_of_day..DateTime.now.end_of_day)
     
-    @all_matches = Match.where('final_result1 IS NULL AND final_result2 IS NULL AND date >= ?', DateTime.now)
+    
+    #@all_matches = Match.where('final_result1 IS NULL AND final_result2 IS NULL AND date >= ?', DateTime.now)
     
     #@result = Result.where(:user => current_user).first
     
     #@all_matches = Match.where
+    
+    #@all_matches = Match.where(date: (DateTime.now.to_date + 3.days + 13.hours)..(DateTime.now + 4.days))
+    
+    # Procura os jogos disponíveis para o palpite
+    #next_match
+    
+    #@all_matches = Match.where('date >= ?', DateTime.now)
+    
+    #Data do jogo do Brasil dia 15 as 16: 
+    #DateTime.now.to_date + 3.days + 13.hours
+    
+    #Data do jogo do México dia 16 as 16:
+    #DateTime.now.to_date + 3.days + 14.hours
+    
+    #DEBUG
+    
+    #day_of_match = Match.where('date >= ?', DateTime.now).order(:date).select(:date).first
+    #@all_matches = Match.where('date >= ? AND date <= ?', day_of_match.date, day_of_match.date.end_of_day)
+    
+    #DEBUG
+    
+    #Busca a primeira da data do jogo mais recente a partir da data atual 
+    day_of_match = Match.where('date >= ?', DateTime.now).order(:date).select(:date).first
+    
+    #A partir da data mais próxima, busca os jogos a partir dessa data e horário
+    all_matches_of_day = Match.where('date >= ? AND date <= ?', day_of_match.date, day_of_match.date.end_of_day)
+    
+    #Verifica se o usuário já palpitou em um dos jogos
+    results = Result.where(:user_id => current_user.id)
+            
+        
+    
+    #@all_matches = Match.all
+     
+    #@all_matches = Match.where(date: (DateTime.now)..(DateTime.now + 1.days))
+     
+    #@results = Result.where('user_id = ? AND match_id IS NULL', current_user)
+    
     
   end
   
