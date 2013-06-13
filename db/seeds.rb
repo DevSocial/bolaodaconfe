@@ -1,12 +1,15 @@
 # encoding: utf-8
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities)
+puts 'POINTINGS'
+pointings = []
+pointings << Pointing.create(
+  [
+    { :name => 'Acertou na mosca', :point => 10 },
+    { :name => 'Corneteiro! Pelo menos acertou quem ganhou', :point => 5 },
+    { :name => 'Que fase! Só acertou o número de bolas dentro', :point => 3 },
+    { :name => 'Lamentável! você precisa assistir mais futebol, oh cabeção!', :point => 0 }
+  ], :without_protection => true
+)
 
 puts 'TEAMS'
 teams = []
