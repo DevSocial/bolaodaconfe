@@ -21,9 +21,15 @@
         <td class='span2'><%= l match.date, :format => :short %></td>
         <td class='span2'><%= match.locale %></td>
         <td class='span2'><%= image_tag(match.team1.flag) %></td>
-        <td class='span2'><%= match.team1.name %></td>
-        <td class='span2'><i class="icon-asterisk"></i></td>
-        <td class='span2'><%= match.team2.name %></td>
+        <td class='span2'>
+          <%= match.team1.name %><br>
+          <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result1 %></span>
+        </td>
+        <td class='span2'><%= image_tag("vs.png", :size => "60x60", :class => 'img-rounded') %></td>
+        <td class='span2'>
+          <%= match.team2.name %><br>
+          <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result2 %></span>
+        </td>
         <td class='span2'><%= image_tag(match.team2.flag) %></td>
       </tr>
     <% end %>
@@ -51,11 +57,13 @@
         <td class='span2'><%= l match.date, :format => :short %></td>
         <td class='span2'><%= match.locale %></td>
         <td class='span2'><%= image_tag(match.team1.flag, :class => 'img-rounded') %></td>
-        <td class='span2'><%= match.team1.name %><br>
-           <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result1 %></span>
+        <td class='span2'>
+          <%= match.team1.name %><br>
+          <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result1 %></span>
         </td>
-        <td class='span2'><i class="icon-asterisk"></i></td>
-        <td class='span2'><%= match.team2.name %><br>
+        <td class='span2'><%= image_tag("vs.png", :size => "60x60", :class => 'img-rounded') %></td>
+        <td class='span2'>
+          <%= match.team2.name %><br>
           <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result2 %></span>
         </td>
         <td class='span2'><%= image_tag(match.team2.flag, :class => 'img-rounded') %></td>
