@@ -22,7 +22,7 @@ class ResultsController < ApplicationController
     #DEBUG
     
     #Busca a primeira da data do jogo mais recente a partir da data atual 
-    day_of_match = Match.where('date >= ?', DateTime.now.to_date + 3.days + 11.hours).order(:date).select(:date).first
+    day_of_match = Match.where('date >= ?', DateTime.now).order(:date).select(:date).first
     
     #A partir da data mais próxima, busca os jogos a partir dessa data e horário
     matche_id_of_day = Match.where('date >= ? AND date <= ?', day_of_match.date, day_of_match.date.end_of_day).order(:date).select(:id).collect(&:id)
