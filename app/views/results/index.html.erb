@@ -25,7 +25,7 @@
           <td class='span2'><%= f.text_field :result2,
                                              disabled: (true if result.match.date < DateTime.now), 
                                              :class => 'input-mini match', 
-                                             :title =>"Digite aqui seu palpite!"%></td>
+                                             :title => "Digite aqui seu palpite!" %></td>
           
           <td class='span2'><%= image_tag(result.match.team2.flag) %></td>
           
