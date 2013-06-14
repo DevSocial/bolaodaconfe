@@ -1,5 +1,7 @@
-<p><%= @statistics_results.to_a %></p>
-<p><%= "#{@statistics_results.to_a}".html_safe %></p>
+
+<div class="control-group info">
+  <label class="control-label" for="inputInfo">Total de palpites até o momento: <%= @count_results %></label>
+</div>
 
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
 
@@ -10,8 +12,8 @@
   function drawChart() {
     var data = google.visualization.arrayToDataTable(
     [
-      ['Task', 'Hours per Day'],
-      <%= "#{@statistics_results.to_a}".html_safe %>
+      ['Seleção', 'Palpites'],
+      <%= "#{@google_chart}".html_safe %>
     ]
    );
    
