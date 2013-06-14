@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    #Questão de segurança, impede q os usuarios acessem a tela de visualização
+    redirect_to matches_url
+    #@user = User.find(params[:id])
   end
 
   def create
