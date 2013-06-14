@@ -2,6 +2,7 @@ Bolaodaconfe::Application.routes.draw do
 
   resources :users
   resources :results
+  resources :statistics_results
   resources :matches
   
   resource :confirmation, :only => [:show] 
