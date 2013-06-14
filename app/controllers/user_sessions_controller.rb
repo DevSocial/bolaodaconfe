@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
   def create
     @session = UserSession.new(session, params[:user_session])
     if @session.authenticate
-      redirect_to root_path, :notice => 'Login efetuado com sucesso!'
+      redirect_to matches_url, :notice => 'Login efetuado com sucesso!'
     else
       render :new
     end

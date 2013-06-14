@@ -42,42 +42,46 @@
 
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
+    <div id='wrap'>
+      <div class="navbar navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container">
+            <% if user_signed_in? %>
+              <%= render 'layouts/user_navigation' %>
+            <% else %>
+              <%= render 'layouts/visitor_navigation' %>
+            <% end %>
+          </div>
+        </nav>
+      </div>
+      <div id="main" role="main">
         <div class="container">
-          <% if user_signed_in? %>
-            <%= render 'layouts/user_navigation' %>
-          <% else %>
-            <%= render 'layouts/visitor_navigation' %>
-          <% end %>
-        </div>
-      </nav>
-    </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
+          <div class="content">
+             <div class="row">
+              <div class="span12">
+                <%= render 'layouts/messages' %>
+                <%= yield %>
+              </div>
             </div>
           </div>
+        </div> <!--! end of .container -->
+        
+      </div> <!--! end of #main -->
+    </div>
+    <div id='push'></div>
+    <footer class="navbar navbar-fixed-bottom">
+      <div id="footer">
+        <div class="container">
+          <ul class="inline">
+            <li> <%= link_to(image_tag('conf.jpg', :size => "30x20"), "http://www.fifa.com/confederationscup/index.html/") %></li>
+            <li> <%= link_to(image_tag('heroku.png', :size => "30x20"), "https://www.heroku.com/") %></li>
+            <li> <%= link_to(image_tag('ruby.png', :size => "30x20"), "http://www.ruby-lang.org/") %></li>
+            <li> <%= link_to(image_tag('github.gif', :size => "40x40"), "https://github.com/DevSocial/bolaodaconfe") %></li>
+            <li> <%= link_to(image_tag('rails.png', :size => "30x20"), "http://rubyonrails.org/") %></li>
+            <li> <p class="muted credit">&copy; DevSocial 2013</p></li>
+          </ul>
         </div>
-      </div> <!--! end of .container -->
-      <footer class="navbar navbar-fixed-bottom">
-        <div id="footer">
-          <div class="container">
-            <ul class="inline">
-              <li> <%= link_to(image_tag('conf.jpg', :size => "30x20"), "http://www.fifa.com/confederationscup/index.html/") %></li>
-              <li> <%= link_to(image_tag('heroku.png', :size => "30x20"), "https://www.heroku.com/") %></li>
-              <li> <%= link_to(image_tag('ruby.png', :size => "30x20"), "http://www.ruby-lang.org/") %></li>
-              <li> <%= link_to(image_tag('github.gif', :size => "40x40"), "https://github.com/gabriel-lima/bolaodaconfe") %></li>
-              <li> <%= link_to(image_tag('rails.png', :size => "30x20"), "http://rubyonrails.org/") %></li>
-              <li> <p class="muted credit">&copy; Company 2013</p></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-    </div> <!--! end of #main -->
+      </div>
+    </footer>
   </body>
 </html>
