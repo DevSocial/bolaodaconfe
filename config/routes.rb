@@ -11,5 +11,5 @@ Bolaodaconfe::Application.routes.draw do
     resources :users
   end
   
-  root :to => 'home#index'
+  root :to => 'user_sessions#new'
 end
