@@ -47,6 +47,11 @@ class ResultsController < ApplicationController
   def update
     @result = Result.find(params[:id])
     respond_to do |format|
+      if @match.date < DateTime.now
+        format.json { render :json => { :result => "failed", 
+                                        :message=>"Já não há tempo para mais nada amigo!", 
+                                        :result_id => -1 } }
+      end
       if @result.update_attributes(params[:result])
         format.json { render :json =>{ :result => "ok", :message => "Palpite salvo com sucesso!", :result_id => @result.id } }
       else

@@ -1,2 +1,10 @@
 == Welcome to Bolão da Confe
 
+= Observações gerais: pois é, a aplicação fica toda zuada no IE.
+  
+  O que posso dizer disso? 
+    Se você usa IE, posso supor que tenha mais de 90 anos e não larga de seus costumes.
+    Sua empresa o obriga a usá-lo, tudo bem, consiga dados do admin e instale o Chrome.
+    É desenvolvedor e queria trolar a gente, tudo bem, eu faria o mesmo, hehe.
+    
+Grande abraço.
