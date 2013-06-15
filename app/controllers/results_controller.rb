@@ -30,6 +30,7 @@ class ResultsController < ApplicationController
   
   def update
     @result = Result.find(params[:id])
+    @match = Match.find(@result.match_id)
     respond_to do |format|
       if @match.date < DateTime.now
         format.json { render :json => { :result => "failed", 
