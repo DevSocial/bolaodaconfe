@@ -40,7 +40,7 @@
                                           :class => 'img-rounded') %></td>
           
           <td class='span2'><%= f.text_field :result2,
-                                             disabled: (true if result.match.date < Time.zone.now, 
+                                             disabled: (true if result.match.date < Time.zone.now), 
                                              :class => 'input-mini match', 
                                              :title => "Digite aqui seu palpite!" %></td>
           <td class='span2'><%= result.match.team2.name %><br>
@@ -59,7 +59,7 @@
                                        :class => 'btn btn-success' %></td>                                          
                       
           <!-- Button to trigger modal -->
-          <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+          <!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a> -->
           
         <% end %>
       </tr>

@@ -42,71 +42,70 @@ if Match.count == 0
         :team2 => Team.find_by_name('Japão') },
 
       { :group => 'A',
-        :date => DateTime.strptime("16/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 16, 16, 00), 
         :locale => "Rio de Janeiro", 
         :team1 => Team.find_by_name('México'),
         :team2 => Team.find_by_name('Itália') },
         
       { :group => 'A',
-        :date => DateTime.strptime("19/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 19, 16, 00), 
         :locale => "Fortaleza", 
         :team1 => Team.find_by_name('Brasil'),
         :team2 => Team.find_by_name('México') },
         
       { :group => 'A',
-        :date => DateTime.strptime("19/06/2013 19:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 19, 19, 00), 
         :locale => "Recife", 
         :team1 => Team.find_by_name('Itália'),
         :team2 => Team.find_by_name('Japão') },
         
       { :group => 'A',
-        :date => DateTime.strptime("22/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 22, 16, 00), 
         :locale => "Salvador",
         :team1 => Team.find_by_name('Itália'),
         :team2 => Team.find_by_name('Brasil') },
         
       { :group => 'A',
-        :date => DateTime.strptime("22/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 2, 16, 00), 
         :locale => "Belo Horizonte", 
         :team1 => Team.find_by_name('Japão'),
         :team2 => Team.find_by_name('México') },
         
       { :group => 'B',
-        :date => DateTime.strptime("16/06/2013 19:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 16, 19, 00), 
         :locale => "Recife", 
         :team1 => Team.find_by_name('Espanha'),
         :team2 => Team.find_by_name('Uruguai') },
         
       { :group => 'B',
-        :date => DateTime.strptime("17/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 17, 16, 00), 
         :locale => "Belo Horizonte", 
         :team1 => Team.find_by_name('Taiti'),
         :team2 => Team.find_by_name('Nigéria') },
         
       { :group => 'B',
-        :date => DateTime.strptime("20/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 20, 16, 00), 
         :locale => "Rio de Janeiro", 
         :team1 => Team.find_by_name('Espanha'),
         :team2 => Team.find_by_name('Taiti') },
         
       { :group => 'B',
-        :date => DateTime.strptime("20/06/2013 19:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 20, 19, 00), 
         :locale => "Salvador", 
         :team1 => Team.find_by_name('Nigéria'),
         :team2 => Team.find_by_name('Uruguai') },
         
       { :group => 'B',
-        :date => DateTime.strptime("23/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 23, 16, 00), 
         :locale => "Fortaleza", 
         :team1 => Team.find_by_name('Nigéria'),
         :team2 => Team.find_by_name('Espanha') },
         
       { :group => 'B',
-        :date => DateTime.strptime("23/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 23, 16, 00), 
         :locale => "Recife", 
         :team1 => Team.find_by_name('Uruguai'),
         :team2 => Team.find_by_name('Taiti') }
-=end
     ], :without_protection => true
   )
 end
