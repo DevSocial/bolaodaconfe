@@ -15,10 +15,10 @@ class Match < ActiveRecord::Base
     end
     
     #DEBUG
-    current_time = DateTime.now + 5.hours
+    #current_time = DateTime.now + 5.hours
     
     #RELEASE
-    #current_time = DateTime.now
+    current_time = DateTime.now
     
     #Se o horário for menor, quer dizer que o jogo já começou
     if match.date < current_time
