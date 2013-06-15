@@ -19,4 +19,5 @@ class ApplicationController < ActionController::Base
   def require_no_authentication
     redirect_to matches_url if user_signed_in?
   end
+
 end

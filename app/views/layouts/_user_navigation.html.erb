@@ -1,15 +1,12 @@
 <%= link_to "Bolão da Confe", "#", :class => 'brand' %>
+
+<% unless Match.match_in_progress.nil? %> 
+<%=  link_to 'Siga aqui a pelota rolando!', match_progress_path, :class => 'brand' %>
+<% end %>
+
 <ul class="nav">
-  <li>
-  <%= link_to 'Jogos', matches_path %>
-  </li>
-  <li>
-  <%= link_to 'Palpitar', results_path %>
-  </li>
-  <li>
-  <%= link_to 'Estatísticas', statistics_results_path %>
-  </li>
-  <li>
-    <%= link_to 'Sair', user_sessions_path, :method => :delete %>
-  </li>
+  <li><%= link_to 'Jogos', matches_path %></li>
+  <li><%= link_to 'Palpitar', results_path %></li>
+  <li><%= link_to 'Estatísticas', statistics_results_path %>
+  <li><%= link_to 'Sair', user_sessions_path, :method => :delete %></li>
 </ul>

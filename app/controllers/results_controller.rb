@@ -5,29 +5,13 @@ class ResultsController < ApplicationController
   before_filter :require_authentication,
     :only => [:index, :new, :create, :destroy, :update]
 
-#  respond_to :html, :json
-
   def index
-    #Data do jogo do Brasil dia 15 as 16: 
-    #DateTime.now.to_date + 3.days + 13.hours
-    
-    #Data do jogo do México dia 16 as 16:
-    #DateTime.now.to_date + 3.days + 11.hours
-    
-    #DEBUG
-    
-    #day_of_match = Match.where('date >= ?', DateTime.now).order(:date).select(:date).first
-    #@all_matches = Match.where('date >= ? AND date <= ?', day_of_match.date, day_of_match.date.end_of_day)
-    
-    #DEBUG
-    
-    #@date = DateTime.now
-    
+
     #Busca a primeira da data do jogo mais recente a partir da data atual 
-    day_of_match = Match.where('date >= ?', DateTime.now).order(:date).select(:date).first
+    match = Match.next_match_of_current_time
     
     #A partir da data mais próxima, busca os jogos a partir dessa data e horário
-    matche_id_of_day = Match.where('date >= ? AND date <= ?', day_of_match.date, day_of_match.date.end_of_day).order(:date).select(:id).collect(&:id)
+    matche_id_of_day = Match.where('date >= ? AND date <= ?', match.date, match.date.end_of_day).order(:date).select(:id).collect(&:id)
     
     #Busca os match_id existentes no Result
     match_id_exists = Result.where('user_id = ? AND match_id IN (?)', current_user.id, matche_id_of_day).select(:match_id).collect(&:match_id)

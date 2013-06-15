@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h2>Siga aqui a pelota rolando...</h2>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Data e horário: <%= l @match.date, :format => :short %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class='span2'><%= image_tag(@match.team1.flag) %></td>
+        <td class='span2'>
+          <%= @match.team1.name %><br>
+          <span class="badge badge-info" title="Resultado da partida"><%= is_nil @match.final_result1 %></span>
+        </td>
+        <td class='span2'><%= image_tag("vs.png", :size => "60x60", :class => 'img-rounded') %></td>
+        <td class='span2'>
+          <%= @match.team2.name %><br>
+          <span class="badge badge-info" title="Resultado da partida"><%= is_nil @match.final_result2 %></span>
+        </td>
+        <td class='span2'><%= image_tag(@match.team2.flag) %></td>
+      </tr>
+  </tbody>
+</table>
+
+<table class="table table-hover span3">
+  <tbody>
+    <% @results.each do |result| %>
+    <tr>
+      <td><%= result.user.full_name %></td>
+      <td><%= result.result1 %></td>
+      <td><%= image_tag("vs.png", :size => "30x30", :class => 'img-rounded') %></td>
+      <td><%= result.result2 %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
