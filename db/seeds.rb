@@ -36,11 +36,11 @@ if Match.count == 0
   matches << Match.create(
     [
       { :group => 'A',
-        :date => DateTime.strptime("15/06/2013 16:00", "%d/%m/%Y %H:%M"), 
+        :date => Time.zone.local(2013, 06, 15, 16, 00), 
         :locale => "Brasília", 
         :team1 => Team.find_by_name('Brasil'),
         :team2 => Team.find_by_name('Japão') },
-        
+
       { :group => 'A',
         :date => DateTime.strptime("16/06/2013 16:00", "%d/%m/%Y %H:%M"), 
         :locale => "Rio de Janeiro", 
@@ -106,6 +106,7 @@ if Match.count == 0
         :locale => "Recife", 
         :team1 => Team.find_by_name('Uruguai'),
         :team2 => Team.find_by_name('Taiti') }
+=end
     ], :without_protection => true
   )
 end
