@@ -6,6 +6,7 @@ Bolaodaconfe::Application.routes.draw do
   resources :matches
   resources :match_progress
   resources :general_ranking
+  resources :rules
   
   resource :confirmation, :only => [:show] 
   resource :user_sessions, :only => [:create, :new, :destroy]

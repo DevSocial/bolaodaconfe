@@ -3,8 +3,11 @@ class User < ActiveRecord::Base
   
   validates_presence_of :email, :full_name
   validates_confirmation_of :password
-  validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
-  validates_uniqueness_of :email 
+  
+  validates :email, 
+    :presence => true, 
+    :uniqueness => { :case_sensitive => false },
+    :format => { :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
   
   has_secure_password  
   before_create :generate_token

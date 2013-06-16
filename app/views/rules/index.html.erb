@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h2>Como funciona essa bagaça?</h2>
+</div>
+
+<table class="table table-hover span5">
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Pontos</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @rules.each do |r| %>
+        <% case r %>
+        <%   when Pointing.ten %>
+              <tr class="text-success">
+                <td><h5><%= r.name %></h5></td>
+                <td><h5><%= r.point %></h5></td>
+              </tr>
+        <%   when Pointing.five %>
+              <tr class="text-info">
+                <td><h5><%= r.name %></h5></td>
+                <td><h5><%= r.point %></h5></td>
+              </tr>
+        <%   when Pointing.three %>
+              <tr class="text-warning">
+                <td><h5><%= r.name %></h5></td>
+                <td><h5><%= r.point %></h5></td>
+              </tr>
+        <%   when Pointing.zero %>
+              <tr class="text-error">
+                <td><h5><%= r.name %></h5></td>
+                <td><h5><%= r.point %></h5></td>
+              </tr>
+        <% end %>
+      <% end %>     
+  </tbody>
+</table>

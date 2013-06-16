@@ -7,6 +7,11 @@ class Match < ActiveRecord::Base
     self.where('date >= ?', Time.zone.now).order(:date).first
   end
   
+  #CORRRIR: 
+  #Náo será possível usar o next_match_of_current_time, pois ele sempre irá buscar
+  #o jogo futuro, e a comparação de data nunca será true
+  #Elaborar outra forma de buscar o jogo em progresso
+  
   def self.match_in_progress
     match = self.next_match_of_current_time
     

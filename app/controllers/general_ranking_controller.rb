@@ -33,6 +33,7 @@ class GeneralRankingController < ApplicationController
     end
     
     #Ordenar pelo maior pontuador
+    #Observação: talvez seja necessário definir regra para desempate
     @general_ranking.sort! { |p1, p2| p1[:pointing].point <=> p2[:pointing].point }
     @general_ranking.reverse!
   end
