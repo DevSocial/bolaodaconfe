@@ -66,7 +66,7 @@ if Match.count == 0
         :team2 => Team.find_by_name('Brasil') },
         
       { :group => 'A',
-        :date => Time.zone.local(2013, 06, 2, 16, 00), 
+        :date => Time.zone.local(2013, 06, 20, 16, 00), 
         :locale => "Belo Horizonte", 
         :team1 => Team.find_by_name('Japão'),
         :team2 => Team.find_by_name('México') },
