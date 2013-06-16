@@ -42,7 +42,9 @@
 
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
+    
     <div id='wrap'>
+      
       <div class="navbar navbar-fixed-top">
         <nav class="navbar-inner">
           <div class="container">
@@ -54,21 +56,20 @@
           </div>
         </nav>
       </div>
+
       <div id="main" role="main">
         <div class="container">
           <div class="content">
-             <div class="row">
-              <div class="span12">
-                <%= render 'layouts/messages' %>
-                <%= yield %>
-              </div>
-            </div>
+            <%= render 'layouts/messages' %>
+            <%= yield %>
           </div>
         </div> <!--! end of .container -->
         
       </div> <!--! end of #main -->
     </div>
+
     <div id='push'></div>
+
     <footer class="navbar navbar-fixed-bottom">
       <div id="footer">
         <div class="container">
@@ -83,5 +84,6 @@
         </div>
       </div>
     </footer>
+
   </body>
 </html>

@@ -1,31 +1,52 @@
+<style type="text/css">
+  .form-vertical{
+    margin-top: 5%;
+    margin-left: 35%;
+    background-color: #fff;
+    padding: 50px;
+    width: 230px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+       -moz-border-radius: 10px 10px 10px 10px;
+            border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+            box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  }
+
+  html, body {
+    background-color: #eee;
+  }
+</style>
+
 <% if @session.errors.has_key? :base %>
-  <div id="error_explanation">
+  <div id="error_alert" class="alert alert-error">
     <%= @session.errors[:base].join(', ') %>
   </div>
 <% end %>
 
-<%= form_for @session, :html => { :class => 'form-vertical' } do |f| %>
-  <fieldset>
-    <h4>Acesse o Bolão da Confe e comece a palpitar!</h4>
-    <div class="control-group">
-      <%= f.label 'Email', :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :email, :class => 'text_field' %>
-          <%= error_tag @session, :email %>
-        </div>
-    </div>
-    <div class="control-group">
-      <%= f.label 'Senha', :class => 'control-label' %>
-        <div class="controls">
-          <%= f.password_field :password, :class => 'text_field' %>
-          <%= error_tag @session, :password %>
-        </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-        <%= f.submit 'Entrar', :class => 'btn btn-primary' %>
-        <%= link_to 'Cadastre-se', new_user_path, :class => 'btn' %>
+
+  <%= form_for @session, :html => { :class => 'form-vertical' } do |f| %>
+    <fieldset>
+      
+      <div class="control-group">
+        <%= f.label 'Email', :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :email, :class => 'text_field' %>
+            <%= error_tag @session, :email %>
+          </div>
       </div>
-    </div> 
-  </fieldset>
-<% end %>
+      <div class="control-group">
+        <%= f.label 'Senha', :class => 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password, :class => 'text_field' %>
+            <%= error_tag @session, :password %>
+          </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit 'Entrar', :class => 'btn btn-primary' %>
+          <%= link_to 'Cadastre-se', new_user_path, :class => 'btn' %>
+        </div>
+      </div> 
+    </fieldset>
+  <% end %>
