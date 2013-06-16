@@ -7,7 +7,7 @@ if Pointing.count == 0
     [
       { :name => 'Acertou na mosca', :point => 10 },
       { :name => 'Corneteiro! Pelo menos acertou quem ganhou', :point => 5 },
-      { :name => 'Que fase! Só acertou o número de bolas dentro', :point => 3 },
+      { :name => 'Que fase! Só acertou meio placar', :point => 3 },
       { :name => 'Lamentável! você precisa assistir mais futebol, oh cabeção!', :point => 0 }
     ], :without_protection => true
   )
