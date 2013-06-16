@@ -13,7 +13,7 @@ Bolaodaconfe::Application.routes.draw do
     resources :users
   end
   
-  match 'new/:match' => 'statistics_results#new'
+  #match 'new/:match' => 'statistics_results#new'
   match 'statistics/:match' => 'results#statistics'
     
   root :to => 'user_sessions#new'

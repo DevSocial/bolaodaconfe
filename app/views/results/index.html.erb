@@ -50,18 +50,18 @@
                                 disabled: (true if result.match.date < Time.zone.now), 
                                 :class => 'btn btn-large btn-primary' %></td>
           
-         <td class='span2'><%= link_to "Chutes da Galera", 
-                                       { :action => 'statistics', 
-                                         :match => result.match_id },
-                                       :id => "btn_statistics",
-                                       :data => { :toggle => "modal", :target => "#myModal" },                      
-                                       :remote => true,
-                                       :class => 'btn btn-success' %></td>                                          
+                                                   
                       
           <!-- Button to trigger modal -->
           <!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a> -->
           
         <% end %>
+        <span class='span2'><%= button_to "Chutes da Galera", 
+                                       { :action => 'statistics', 
+                                         :match => result.match_id },
+                                       :id => "btn_statistics",
+                                       :remote => true,
+                                       :class => 'btn btn-success' %></span>
       </tr>
     <% end %>
   </tbody>
@@ -79,6 +79,9 @@
     </dl>
   </div>
 <% end %>
+
+
+<div id="chart_div" style="width: 900px; height: 500px;"></div> 
 
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -98,10 +101,45 @@
   
   $(document).ready(function() {
   
-    $('.btn_statistics').bind('ajax:success', function(evt, data, status, xhr) {
+   //google.load("visualization", "1", {packages:["corechart"]});
       
-      alert(data.content);
+  
+/*  
+    $('[data-toggle="modal"]').click(function(e) {
+      e.preventDefault();
+      var url = $(this).attr('href');
+      //var modal_id = $(this).attr('data-target');
+      $.get(url, function(data) {
+          $(data).modal();
+      });
+    });
+  */
+    $('.button_to').bind('ajax:success', function(evt, data, status, xhr) {
+     
+	    $('#myModal').modal({show:true});
+	    
+	    //alert(data.content);
+	    
+	    
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([['Seleção', 'Palpites'], data.content]);
+       
+        var options = {
+          title: 'Chutes da galera:'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      //
       
+      //$('#myModal').modal();
+      
+      //alert(data.content);
+      
+      /*
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -114,8 +152,14 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-      //$('.myModal').show();
+      */
 
+    });
+    
+    $("#myModal").on("show", function() {    // wire up the OK button to dismiss the modal when shown
+        //alert('ok');
+        
+       
     });
   
   
