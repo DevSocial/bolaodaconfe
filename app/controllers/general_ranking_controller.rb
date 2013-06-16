@@ -17,6 +17,7 @@ class GeneralRankingController < ApplicationController
     #Obtém todos os palpites onde os jogos já foram encerrados
     results = Result.joins(:match).where('final_result1 IS NOT NULL AND final_result2 IS NOT NULL').includes(:match).order(:user_id)
     
+    #Popula a pontução de cada usuário
     results.each do |result|
       @general_ranking.each do |gr|
         if gr[:user] == result.user
@@ -31,6 +32,9 @@ class GeneralRankingController < ApplicationController
       end
     end
     
+    #Ordenar pelo maior pontuador
+    @general_ranking.sort! { |p1, p2| p1[:pointing].point <=> p2[:pointing].point }
+    @general_ranking.reverse!
   end
 
 end

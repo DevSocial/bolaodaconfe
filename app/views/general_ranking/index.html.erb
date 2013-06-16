@@ -19,13 +19,13 @@
           </tr>
         <% elsif @general_ranking.last == ranking %>
           <tr class="error">
-            <td><h5><%= ranking[:user].full_name %></h5></td>
-            <td><h5><%= ranking[:pointing].point %></h5></td>
+            <td><h4><%= ranking[:user].full_name %></h4></td>
+            <td><h4><%= ranking[:pointing].point %></h4></td>
           </tr>
         <% else %>
           <tr>
-            <td><h6><%= ranking[:user].full_name %></h6></td>
-            <td><h6><%= ranking[:pointing].point %></h6></td>
+            <td><h5><%= ranking[:user].full_name %></h5></td>
+            <td><h5><%= ranking[:pointing].point %></h5></td>
           </tr>
         <% end %>
       <% end %>
