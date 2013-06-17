@@ -5,8 +5,7 @@ class Pointing < ActiveRecord::Base
     if result.result1 == result.match.final_result1 && result.result2 == result.match.final_result2
       self.ten 
     elsif (result.match.final_result1 > result.match.final_result2 && result.result1 > result.result2) || 
-          (result.match.final_result2 > result.match.final_result1 && result.result2 > result.result1) || 
-          (result.match.final_result1 == result.match.final_result2 && result.result1 == result.result2)
+          (result.match.final_result2 > result.match.final_result1 && result.result2 > result.result1)
       self.five
     elsif result.match.final_result1 == result.result1 || result.match.final_result2 == result.result2
       self.three
