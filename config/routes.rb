@@ -19,4 +19,7 @@ Bolaodaconfe::Application.routes.draw do
   match 'statistics/:match' => 'results#statistics'
     
   root :to => 'user_sessions#new'
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 end

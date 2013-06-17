@@ -26,10 +26,9 @@
         <%= form_for result, :remote => true do |f| %>
           <%= f.hidden_field :match_id, :value => result.match_id %>
           <%= f.hidden_field :user_id, :value => result.user_id %>
-          <td class='span3'><%= l result.match.date, :format => :short %></td>
-          <!--<td><%= result.match.locale %></td>-->
+          <td class='span3'><h6><%= l result.match.date, :format => :short %><h6></td>
           <td class='span2'><%= image_tag(result.match.team1.flag, :class => 'img-rounded') %></td>
-          <td class='span2'><%= result.match.team1.name %><br>
+          <td class='span2'><h4><%= result.match.team1.name %></h4><td>
           <td class='span2'><%= f.text_field :result1,
                                              disabled: (true if result.match.date < Time.zone.now), 
                                              :class => 'input-mini match', 
@@ -43,7 +42,7 @@
                                              disabled: (true if result.match.date < Time.zone.now), 
                                              :class => 'input-mini match', 
                                              :title => "Digite aqui seu palpite!" %></td>
-          <td class='span2'><%= result.match.team2.name %><br>
+          <td class='span2'><h4><%= result.match.team2.name %></h4><td>
           <td class='span2'><%= image_tag(result.match.team2.flag, :class => 'img-rounded') %></td>
           
           <td class='span2'><%= f.submit "Palpitar",
