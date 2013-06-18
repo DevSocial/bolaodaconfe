@@ -1,15 +1,19 @@
 <div class="page-header">
   <h2>Palpites da Galera!</h2>
   <p><h4>Data: <%= l @match.date, :format => :short %></h4></p>
+  <p><h4>Placar Final: <%= @match.team1.name + ' ' + 
+                           @match.final_result1.to_s + ' x ' + 
+                           @match.final_result2.to_s + ' ' +  
+                           @match.team2.name %> </h4></p>
 </div>
 
 <table class="table table-striped">
   <tbody>
     <% @results.each do |result| %> 
       <tr>
-        <td class='span3'><h3><%= result.user.full_name %><h3></td>
+        <td class='span3'><h4><%= result.user.full_name %><h4></td>
           <td class='span2'><%= image_tag(result.match.team1.flag, :class => 'img-rounded') %></td>
-          <td class='span2'><h4><%= result.match.team1.name %></h4><td>
+         
           <td class='span2'><%= text_field_tag result.result1,
                                                result.result1,
                                                :class => 'input-mini match',
@@ -23,7 +27,7 @@
                                                :class => 'input-mini match',
                                                :disabled => true %></td>
 
-          <td class='span2'><h4><%= result.match.team2.name %></h4><td>
+          
           <td class='span2'><%= image_tag(result.match.team2.flag, :class => 'img-rounded') %></td>
         
       </tr>
