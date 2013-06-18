@@ -7,6 +7,11 @@ Bolaodaconfe::Application.routes.draw do
   resources :match_progress
   resources :general_ranking
   resources :rules
+  resources :history_matches do
+    collection do
+      get 'preview'
+    end
+  end
   
   resource :confirmation, :only => [:show] 
   resource :user_sessions, :only => [:create, :new, :destroy]

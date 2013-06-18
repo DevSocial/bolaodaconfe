@@ -1,0 +1,35 @@
+<!--<div>
+  <select id="select_matches" class="selectpicker">
+    <option></option>
+    <% @matches.each do |match| %> 
+      <option value='<%= match.id %>'>
+        <%= match.team1.name + ' x ' + match.team2.name + ' - ' + (l match.date, :format => :short) %>
+      </option>
+    <% end %>
+  </select>
+</div>-->
+
+<% @matches.each do |match| %> 
+  <%= link_to match.team1.name + ' x ' + match.team2.name + ' - ' + (l match.date, :format => :short),
+              {:controller => "history_matches", 
+              :action => "preview", :id => match.id },
+              :class => 'btn btn-primary',
+              "data-type" => :html,
+              :remote => true %>
+<% end %>
+
+<div id="response_data">
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('.btn').bind('ajax:success', function(evt, data, status, xhr) {
+      $('#response_data').html(data);
+    });
+
+    $('#select_matches').change(function(){
+      /* Not used */
+    });
+  });
+</script>
