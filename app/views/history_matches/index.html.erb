@@ -24,6 +24,10 @@
 <script type="text/javascript">
   $(document).ready(function() {
 
+    $('.btn').bind('ajax:beforeSend', function(evt, data, status, xhr) {
+      $('#response_data').html('<center><br><br><br><br><br><br><%= image_tag "loading.gif", :style => "height:40px; width:40px;" %></center>');
+    });
+
     $('.btn').bind('ajax:success', function(evt, data, status, xhr) {
       $('#response_data').html(data);
     });
