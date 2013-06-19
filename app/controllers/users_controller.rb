@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     if @user.save
       SignupMailer.confirm_email(@user).deliver
 
-      redirect_to @user, :notice => 'Cadastro criado com sucesso! Um e-mail foi enviado para a confirmação de seu cadastro.'
+      redirect_to root_path, 
+                  :notice => 'Cadastro criado com sucesso! Um e-mail foi enviado para a confirmação de seu cadastro.'
     else
       render :new
     end

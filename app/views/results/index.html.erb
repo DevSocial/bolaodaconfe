@@ -15,10 +15,13 @@
 
       <% unless @post.nil? %>
         <h4>#FicaDica: </h4>    
-        <blockquote style='width: 50%;'>
+        <blockquote style='width: 80%;'>
           
           <p><%= @post.content %></p>
-          <small>Dicas e comentários do Boleiro Master <cite title="Source Title"><%= @post.user.full_name %></cite></small>
+          
+          <small>
+            Dicas e comentários do Boleiro Master <cite title="Source Title"><%= @post.user.full_name %></cite>
+          </small>
         </blockquote>
       <% end %>
     
@@ -168,12 +171,12 @@
       //$.find('.alert alert-success').html("errorText");
       if(data.result == 'ok'){
         $('#alertOk').html(data.message);
-        $('#alertOk').fadeIn().delay(3000).fadeOut();
+        $('#alertOk').fadeIn().delay(4000).fadeOut();
         $('#alertError').fadeOut();
       }
       else{
         $('#alertError').html(data.message);
-        $('#alertError').fadeIn().delay(3000).fadeOut();
+        $('#alertError').fadeIn().delay(4000).fadeOut();
         $('#alertOk').fadeOut();
       }
     }); 
