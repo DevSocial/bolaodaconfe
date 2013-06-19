@@ -69,7 +69,7 @@ class ResultsController < ApplicationController
       result.save(:validate => false)
     end
     
-    @results = Result.where('user_id = ? AND match_id IN (?)', current_user.id, matche_id_of_day)
+    @results = Result.where('user_id = ? AND match_id IN (?)', current_user.id, matche_id_of_day).order(:id)
     
   end
   

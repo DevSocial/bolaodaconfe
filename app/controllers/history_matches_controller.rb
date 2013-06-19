@@ -9,7 +9,8 @@ class HistoryMatchesController < ApplicationController
   end
 
   def preview
-    @results = Result.where('match_id = ?', params[:id])
+    @results = Result.joins(:user).where('match_id = ? AND result1 IS NOT NULL AND result2 IS NOT NULL', 
+                            params[:id]).order(:full_name)
     @match = Match.find(params[:id])
   end
 
