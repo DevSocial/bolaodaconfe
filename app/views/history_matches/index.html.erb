@@ -1,5 +1,5 @@
-<!--<div>
-  <select id="select_matches" class="selectpicker">
+<div style="text-align: center;">
+  <select id="select_matches" class="selectpicker" data-style="btn-info" data-width="auto">
     <option></option>
     <% @matches.each do |match| %> 
       <option value='<%= match.id %>'>
@@ -7,8 +7,8 @@
       </option>
     <% end %>
   </select>
-</div>-->
-
+</div>
+<!--
 <% @matches.each do |match| %> 
   <%= link_to match.team1.name + ' x ' + match.team2.name + ' - ' + (l match.date, :format => :short),
               {:controller => "history_matches", 
@@ -17,23 +17,42 @@
               "data-type" => :html,
               :remote => true %>
 <% end %>
-
+-->
 <div id="response_data">
 </div>
 
 <script type="text/javascript">
   $(document).ready(function() {
 
-    $('.btn').bind('ajax:beforeSend', function(evt, data, status, xhr) {
+    /*Ativa o style do select*/
+    $('select').selectpicker();
+
+    /*$('.btn').bind('ajax:beforeSend', function(evt, data, status, xhr) {
       $('#response_data').html('<center><br><br><br><br><br><br><%= image_tag "loading.gif", :style => "height:40px; width:40px;" %></center>');
     });
 
     $('.btn').bind('ajax:success', function(evt, data, status, xhr) {
       $('#response_data').html(data);
-    });
+    });*/
 
     $('#select_matches').change(function(){
-      /* Not used yet */
+      var url = '<%= url_for :controller => "history_matches", :action => "preview", :id => "" %>';
+      var id = $("#select_matches option").filter(":selected").val();
+
+      if(id){
+        $.ajax({
+          url: url + id,
+          dataType: 'html',
+          beforeSend: function () { PutLoading(); },
+          success: function(data) { $('#response_data').html(data); }
+        });
+      }
+
     });
   });
+
+  function PutLoading(){
+    var image = '<%= image_tag "loading.gif", :style => "height:40px; width:40px;" %>';
+    $('#response_data').html('<center><br><br><br><br><br><br>' + image + '</center>');
+  }
 </script>
