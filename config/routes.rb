@@ -13,6 +13,8 @@ Bolaodaconfe::Application.routes.draw do
     end
   end
   
+  resources :comments
+  
   resource :confirmation, :only => [:show] 
   resource :user_sessions, :only => [:create, :new, :destroy]
   
