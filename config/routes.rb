@@ -1,5 +1,8 @@
 Bolaodaconfe::Application.routes.draw do
 
+  resources :pages
+
+
   resources :users
   resources :results
   resources :statistics_results

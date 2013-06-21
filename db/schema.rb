@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617001234) do
+ActiveRecord::Schema.define(:version => 20130621023523) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,6 +71,12 @@ ActiveRecord::Schema.define(:version => 20130617001234) do
 
   add_index "matches", ["team1_id"], :name => "index_matches_on_team1_id"
   add_index "matches", ["team2_id"], :name => "index_matches_on_team2_id"
+
+  create_table "pages", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pointings", :force => true do |t|
     t.string   "name"

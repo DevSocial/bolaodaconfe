@@ -32,6 +32,7 @@ end
 gem "therubyracer"
 gem "less-rails" 
 gem "twitter-bootstrap-rails"
+gem "ckeditor"
 
 #gem 'jquery-rails'
 gem 'jquery-rails', '~> 2.3.0'
