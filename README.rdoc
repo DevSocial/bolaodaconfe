@@ -1,2 +1,6 @@
-== Welcome to Bolão da Confe
+== Bolão da Confe
+
+Aplicação voltada ao torneio Copa das Confederações 2013.
+A partir de um cadastro simples, o usuário poderá palpitar nas partidas vigentes, entender da regra de pontuação,
+verificar sua posição no ranking e consultar o histórico de palpites de cada partida.
 
