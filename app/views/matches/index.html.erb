@@ -1,6 +1,42 @@
 <% model_class = Match %>
 
 <div class="page-header">
+  <h1>Finais</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data e Horário</th>
+      <th>Local</th>
+      <th></th>
+      <th></th>
+      <th>Jogo</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @finais.each do |match| %>
+      <tr>
+        <td class='span2'><%= l match.date, :format => :short %></td>
+        <td class='span2'><%= match.locale %></td>
+        <td class='span2'><%= image_tag(match.team1.flag) %></td>
+        <td class='span2'>
+          <%= match.team1.name %><br>
+          <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result1 %></span>
+        </td>
+        <td class='span2'><%= image_tag("vs.png", :style => 'height:60px; width:60px;', :class => 'img-rounded') %></td>
+        <td class='span2'>
+          <%= match.team2.name %><br>
+          <span class="badge badge-info" title="Resultado da partida"><%= is_nil match.final_result2 %></span>
+        </td>
+        <td class='span2'><%= image_tag(match.team2.flag) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="page-header">
   <h1>Semifinais</h1>
 </div>
 <table class="table table-striped">
