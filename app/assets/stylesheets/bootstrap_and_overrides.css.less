@@ -1,7 +1,10 @@
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
 
-body { padding-top: 60px; } 
+body { 
+  background-image:url('cup.jpg');
+  padding-top: 60px; 
+} 
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
@@ -19,15 +22,37 @@ body { padding-top: 60px; }
 //@import "fontawesome";
 
 // Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+@import "twitter/bootstrap/sprites.less";
 
-// Your custom LESS stylesheets goes here
-//
-// Since bootstrap was imported above you have access to its mixins which
-// you may use and inherit here
-//
-// If you'd like to override bootstrap's own variables, you can do so here as well
-// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
-//
-// Example:
-// @linkColor: #ff0000;
+@navbarHeight: 50px;
+
+//@navbarBackground: #3a9018;
+@navbarBackgroundHighlight: #3a9018;
+
+//@navbarText: #f0ea17;
+
+@navbarBrandColor: #f0ea17;
+
+@navbarLinkColor: #FFEE00;
+//@navbarLinkColorHover: #FFEE00;
+//@navbarLinkColorActive: #FFEE00;
+
+@navbarLinkBackgroundHover: #FFEE00;
+//@navbarLinkBackgroundActive: #FFEE00;
+
+//@navbarCollapseWidth: 979px;
+
+@linkColor: #FFEE00;
+@linkColorHover: #337700;
+
+//@tableBackground: transparent;
+//@tableBackgroundAccent: #f9f9f9;
+
+//@dropdownBackground: #FFEE00;
+//@dropdownLinkColor: #337700;
+@dropdownLinkColorHover: #337700;
+//@dropdownLinkBackgroundHover: #FFEE00;
+
+.btn-primary {
+  color: #337700;
+}
