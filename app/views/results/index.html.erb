@@ -3,73 +3,75 @@
 <div class="alert alert-success" style="display:none;" id='alertOk'></div>
 <div class="alert alert-error" style="display:none;" id='alertError'></div>
 
-<div class="page-header">
-  <h2>Palpita aí Manolo!</h2>
-</div>
+<div class="content2">
+  <div class="page-header">
+    <h2>Palpita aí Manolo!</h2>
+  </div>
 
-<table class="table">
-  <tbody>
-    <% @results.each do |result| %> 
-      <% @post = Post.post_of_match(result.match) %>
-      <% unless @post.nil? %>
-        <h4>#FicaDica: </h4>    
-        <blockquote style='width: 80%;'>
-          <p><%= @post.content %></p>
-          <small>
-            Dicas e comentários do Boleiro Master <cite title="Source Title"><%= @post.user.full_name %></cite>
-          </small>
-        </blockquote>
-      <% end %>
-    
-      <tr>
-        <%= form_for result, :remote => true do |f| %>
-          <%= f.hidden_field :match_id, :value => result.match_id %>
-          <%= f.hidden_field :user_id, :value => result.user_id %>
-          <td class='span3'><h6><%= l result.match.date, :format => :short %><h6></td>
-          <td class='span2'><%= image_tag(result.match.team1.flag,
-                                          :style => 'height:60px; width:60px;', 
-                                          :class => 'img-rounded') %></td>
-          <td class='span2'><h4><%= result.match.team1.name %></h4><td>
-          <td class='span2'><%= f.text_field :result1,
-                                             disabled: (true if result.match.date < Time.zone.now), 
-                                             :class => 'input-mini match', 
-                                             :title => "Digite aqui seu palpite!" %></td>
-                                             
-          <td class='span2'><%= image_tag("vs.png", 
-                                          :style => 'height:60px; width:60px;', 
-                                          :class => 'img-rounded') %></td>
-          
-          <td class='span2'><%= f.text_field :result2,
-                                             disabled: (true if result.match.date < Time.zone.now), 
-                                             :class => 'input-mini match', 
-                                             :title => "Digite aqui seu palpite!" %></td>
-          <td class='span2'><h4><%= result.match.team2.name %></h4><td>
-          <td class='span2'><%= image_tag(result.match.team2.flag, 
-                                          :style => 'height:60px; width:60px;',
-                                          :class => 'img-rounded') %></td>
-          
-          <td class='span2'><%= f.submit "Palpitar",
-                                disabled: (true if result.match.date < Time.zone.now), 
-                                :class => 'btn btn-large btn-primary' %></td>
+  <table class="table">
+    <tbody>
+      <% @results.each do |result| %> 
+        <% @post = Post.post_of_match(result.match) %>
+        <% unless @post.nil? %>
+          <h4>#FicaDica: </h4>    
+          <blockquote style='width: 80%;'>
+            <p><%= @post.content %></p>
+            <small>
+              Dicas e comentários do Boleiro Master <cite title="Source Title"><%= @post.user.full_name %></cite>
+            </small>
+          </blockquote>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      
+        <tr>
+          <%= form_for result, :remote => true do |f| %>
+            <%= f.hidden_field :match_id, :value => result.match_id %>
+            <%= f.hidden_field :user_id, :value => result.user_id %>
+            <td class='span3'><h6><%= l result.match.date, :format => :short %><h6></td>
+            <td class='span2'><%= image_tag(result.match.team1.flag,
+                                            :style => 'height:60px; width:60px;', 
+                                            :class => 'img-rounded') %></td>
+            <td class='span2'><h4><%= result.match.team1.name %></h4><td>
+            <td class='span2'><%= f.text_field :result1,
+                                               disabled: (true if result.match.date < Time.zone.now), 
+                                               :class => 'input-mini match', 
+                                               :title => "Digite aqui seu palpite!" %></td>
+                                               
+            <td class='span2'><%= image_tag("vs.png", 
+                                            :style => 'height:60px; width:60px;', 
+                                            :class => 'img-rounded') %></td>
+            
+            <td class='span2'><%= f.text_field :result2,
+                                               disabled: (true if result.match.date < Time.zone.now), 
+                                               :class => 'input-mini match', 
+                                               :title => "Digite aqui seu palpite!" %></td>
+            <td class='span2'><h4><%= result.match.team2.name %></h4><td>
+            <td class='span2'><%= image_tag(result.match.team2.flag, 
+                                            :style => 'height:60px; width:60px;',
+                                            :class => 'img-rounded') %></td>
+            
+            <td class='span2'><%= f.submit "Palpitar",
+                                  disabled: (true if result.match.date < Time.zone.now), 
+                                  :class => 'btn btn-large btn-primary' %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.edit_result').bind('ajax:success', function(evt, data, status, xhr) {  
-      if(data.result == 'ok'){
-        $('#alertOk').html(data.message);
-        $('#alertOk').fadeIn().delay(4000).fadeOut();
-        $('#alertError').fadeOut();
-      }
-      else{
-        $('#alertError').html(data.message);
-        $('#alertError').fadeIn().delay(4000).fadeOut();
-        $('#alertOk').fadeOut();
-      }
-    }); 
-  });  
-</script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.edit_result').bind('ajax:success', function(evt, data, status, xhr) {  
+        if(data.result == 'ok'){
+          $('#alertOk').html(data.message);
+          $('#alertOk').fadeIn().delay(4000).fadeOut();
+          $('#alertError').fadeOut();
+        }
+        else{
+          $('#alertError').html(data.message);
+          $('#alertError').fadeIn().delay(4000).fadeOut();
+          $('#alertOk').fadeOut();
+        }
+      }); 
+    });  
+  </script>
+</div>

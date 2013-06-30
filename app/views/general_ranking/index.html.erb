@@ -1,34 +1,36 @@
-<div class="page-header">
-  <h2>Ranking Geral da Galera</h2>
-</div>
+<div class="content2">
+  <div class="page-header">
+    <h2>Ranking Geral da Galera</h2>
+  </div>
 
-<table class="table table-hover span5">
-  <thead>
-    <tr>
-      <th>Boleiro</th>
-      <th>Pontos</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% unless @general_ranking.empty? %>
-      <% @general_ranking.each do |ranking| %>
-        <% if @general_ranking.first == ranking %>
-          <tr class="info">
-            <td><h3><%= ranking[:user].full_name %></h3></td>
-            <td><h3><%= ranking[:pointing].point %></h3></td>
-          </tr>
-        <% elsif @general_ranking.last == ranking %>
-          <tr class="error">
-            <td><h4><%= ranking[:user].full_name %></h4></td>
-            <td><h4><%= ranking[:pointing].point %></h4></td>
-          </tr>
-        <% else %>
-          <tr>
-            <td><h5><%= ranking[:user].full_name %></h5></td>
-            <td><h5><%= ranking[:pointing].point %></h5></td>
-          </tr>
+  <table class="table table-hover span5" style="color: black;">
+    <thead>
+      <tr>
+        <th>Boleiro</th>
+        <th>Pontos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% unless @general_ranking.empty? %>
+        <% @general_ranking.each do |ranking| %>
+          <% if @general_ranking.first == ranking %>
+            <tr class="success">
+              <td><h3><%= ranking[:user].full_name %></h3></td>
+              <td><h3><%= ranking[:pointing].point %></h3></td>
+            </tr>
+          <% elsif @general_ranking.last == ranking %>
+            <tr class="error">
+              <td><h4><%= ranking[:user].full_name %></h4></td>
+              <td><h4><%= ranking[:pointing].point %></h4></td>
+            </tr>
+          <% else %>
+            <tr class="info">
+              <td><h5><%= ranking[:user].full_name %></h5></td>
+              <td><h5><%= ranking[:pointing].point %></h5></td>
+            </tr>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

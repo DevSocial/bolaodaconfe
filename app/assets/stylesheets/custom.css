@@ -25,7 +25,22 @@
   text-align: right;
 }
 #footer {
-  background-color: transparent;
+  background-color: #368717;
+}
+
+.content2{
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  background: rgba(54, 135, 26, .8);
+}
+
+body{
+  color: #f6f6f6 !important;
+}
+
+.credit {
+  color: #ffee00;
 }
 
 /* Lastly, apply responsive CSS fixes as necessary */
